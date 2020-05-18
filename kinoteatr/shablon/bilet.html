@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+{% load static %}
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+	//$(':checkbox').focus()
+        // выбираем все элементы <input>, которые имеют атрибут type со значением checkbox
+       // $('*').css('box-shadow', '0 0 1px black')
+	
+      })
+    </script>
+
+
+ <style type="text/css">
+   .block1 {
+    align=center;	
+    width: 100%;
+    height: 50px; 
+    background: #f1f1f1;
+    padding-left: 1px;
+    padding-right: 1px; 
+ 
+    float: center;
+   }
+   .block2 { 
+    width: 200px; 
+    background: #fc0; 
+    padding: 0px; 
+    border: solid 1px black; 
+    float: left; 
+    position: relative; 
+    top: 40px; 
+    left: -70px; 
+   }
+   .top { 
+   padding-top: 70px;
+   padding-left: 00px;
+  
+   }
+.block3 {
+	
+}
+
+.block0 {
+	padding: 10px;
+}
+
+  </style>
+
+
+<!--  Beep components  -->
+
+
+<!--  Beep components  -->
+
+
+
+    </head>
+
+    <body class="block3">
+<script language = "javascript">
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.AutoInit();
+
+
+  });
+
+</script>
+
+
+
+
+
+  <nav class="pushpin-demo-nav pinned" style="z-index:99; top:0px">
+    <div class="nav-wrapper orange">
+	<div class="container">
+      <a href="#!" class="brand-logo" style="padding-left: 10px"> Билеты</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+       <li><a href="film">Фильмы</a></li>
+
+        <li><a href="lk">Мои Билеты</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a href="log">Войти</a></li>
+        {% endif %}
+      </ul>
+	</div>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+   <li><a href="film">Фильмы</a></li>
+
+        <li><a href="lk">Мои Билеты</a></li>
+            {% if request.user.is_authenticated %}
+        <li><a href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a href="log">Войти</a></li>
+        {% endif %}
+  </ul>
+
+
+
+
+
+
+<div class="container">
+
+<div class="top" >
+
+	<div class="block0">
+
+ 
+	<div class="row" style="padding: 10px">
+    
+ <div class="row">
+   
+    <div class=" жанр">
+    <div class="col s6 m4">
+      
+      <div class="card">
+        <div class="card-image">
+    <a href="#">
+      
+          <img  src="{% static '/' %}{{film1.src}}"  alt="{{film1.genre}}">
+      
+    </a>
+          <span class="card-title"></span>
+        </div>
+        <div class="card-content">
+          <p> <b>{{film1.film}}</b><br>  </p> 
+        </div>
+        
+
+      </div>
+
+    </div>
+
+
+
+ <div class="row">
+    <div class="col s6 m8">
+      <div class="card-panel">
+        <span style="font-style:bold">
+           <h5>
+              Описание фильма:
+            </h5>
+           {{ film1.description}}
+        </span>
+      </div>
+    </div>
+  <div class="col s12 m8">
+      <div class="card-panel">
+        <span style="font-style:bold">
+         <form action="/pokupka" method="get">
+  <select class="browser-default" name="ryad">
+    <option value="" disabled selected>Выбирите ряд</option>
+    <option value="1">Ряд 1</option>
+    <option value="2">Ряд 2</option>
+    <option value="3">Ряд 3</option>
+  </select>
+
+   <select class="browser-default" name="mesto">
+    <option value="" disabled selected>Выбирите место</option>
+    <option value="1">Место 1</option>
+    <option value="2">Место 2</option>
+    <option value="3">Место 3</option>
+  </select>
+  <br>
+  <input type="text" value="{{film1.film}}" name = "film" style=" display: none;">
+  <input type="submit" name="submit" value="Купить билет">
+  {{ user }}
+  {{idfilm}}
+</form>
+
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+
+ 
+   
+  
+    </div>
+
+   </div> 
+		
+
+
+		
+
+    
+		
+
+    </div> 
+    </div> 
+</div>
+
+
+ 
+  
+ 
+ 
+ 
+
+
+
+
+
+
+
+</div> 
+<!--  ОПАСНЫЙ МЕТОД  -->
+
+
+
+       
+  
+ 
+
+<!--  ОПАСНЫЙ МЕТОД 2  -->
+ 
+ 
+
+
+
+
+
+   <footer class="page-footer orange"  ">
+          <div class="container" >
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Полезная информация</h5>
+                <p class="grey-text text-lighten-4">Демонстрационный сайт-портфолио Евгения Лялина.</p>
+                <p> Все материалы принадлежат их владельцам. </p>
+              </div>
+              <div class="col l4 offset-10 s12">
+                <h5 class="white-text">Навигация</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="film">Фильмы</a></li>
+                  <li><a class="grey-text text-lighten-3" href="lk">Мои Билеты</a></li>
+{% if request.user.is_authenticated %}
+        <li><a class="grey-text text-lighten-3" href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a class="grey-text text-lighten-3" href="log">Войти</a></li>
+        {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            <<<<<
+            <a class="grey-text text-lighten-4 right" href="#!">>>>>></a>
+            </div>
+          </div>
+        </footer>
+
+<!--checkbox-->
+<script>
+$('#triller').on('change', function () {
+             
+
+             if ($('#triller').is(':checked')){
+                  $('.Триллер').css('display', 'none');
+             }
+             else {
+            
+             $('.Триллер').css('display', 'block');
+             }
+          });
+             //.css('display', 'block') // задаем, что элемент <p> становится блочным
+            //.placeholder('Что-то изменилось') // добавляем текстовое содержимое
+            //.fadeOut(750) //  плавно изменяем прозрачность для элемента
+$('#comedy').on('change', function () {
+             
+
+             if ($('#comedy').is(':checked')){
+                  $('.Комедия').css('display', 'none');
+             }
+             else {
+            
+             $('.Комедия').css('display', 'block');
+           }
+           
+          });
+
+$('#travel').on('change', function () {
+             
+
+             if ($('#travel').is(':checked')){
+                  $('.Приключения').css('display', 'none');
+             }
+             else {
+            
+             $('.Приключения').css('display', 'block');
+             }
+            
+        });
+
+//($('#comedy').prop('checked', true)) 
+//($('#triller').prop('checked', true))
+//($('#comedy').prop('checked', true))
+
+
+
+
+    
+
+</script>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+ 
+    </body>
+  </html>
+
+
+
+

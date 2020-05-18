@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить пост</title>
+    <meta charset="utf-8" />
+
+</head>
+<body class="block3">
+
+<style type="text/css">
+.block1 {
+    background-color:rgba(255,102,0,.99);
+    width:600px;
+}
+
+.block2 {
+    background-color:rgba(255,102,0,.60);
+    width:600px;
+    white-space:intial;
+}
+
+.block3 {
+	
+    width:600px;
+   
+}
+</style>
+
+    <h1>Добавьте заметку</h1>
+    <form action="create" method="post" >
+     {% csrf_token %}
+<h3> Заголовок </h3>
+
+<input type="text" name="name" size="width" placeholder="Ваш заголовок" > 
+
+
+<h3> Текст заметки </h3>
+<textarea name="age" rows="10" cols="82" placeholder="Ваш текст" ></textarea>
+<br><br>
+
+
+
+        <input type="submit" value="Сохранить" />
+    </form>
+   
+   {% if people.count > 0 %}
+    <h2>Текущие посты</h2>
+
+       
+	
+	{% for post in  people %}
+	
+		
+	
+      <h2 > <div class="block1">{{ forloop.counter }}{{post.count}} {{ post.title }} </div></h2>  <p class="block2"><br> {{ post.text}}  <br><br></p>
+	
+	
+        {% endfor %}
+    
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+
+  web:
+    build: .
+    command: python manage.py runserver 172.21.0.2:8000
+    volumes:
+      - .:/kinoteatr
+    ports:
+      - 8000:8000   

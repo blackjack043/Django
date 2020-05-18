@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+{% load static %}
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static "css/materialize.min.css" %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+	//$(':checkbox').focus()
+        // выбираем все элементы <input>, которые имеют атрибут type со значением checkbox
+       // $('*').css('box-shadow', '0 0 1px black')
+	
+      })
+    </script>
+
+
+ <style type="text/css">
+   .block1 {
+    align=center;	
+    width: 100%;
+    height: 50px; 
+    background: #f1f1f1;
+    padding-left: 1px;
+    padding-right: 1px; 
+ 
+    float: center;
+   }
+   .block2 { 
+    width: 200px; 
+    background: #fc0; 
+    padding: 0px; 
+    border: solid 1px black; 
+    float: left; 
+    position: relative; 
+    top: 40px; 
+    left: -70px; 
+   }
+   .top { 
+   padding-top: 70px;
+   padding-left: 00px;
+  
+   }
+.block3 {
+	
+}
+
+.block0 {
+	padding: 10px;
+}
+
+  </style>
+
+
+<!--  Beep components  -->
+
+
+<!--  Beep components  -->
+
+
+
+    </head>
+
+    <body class="block3">
+
+      
+<script language = "javascript">
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.AutoInit();
+
+
+  });
+
+</script>
+
+
+
+
+
+  <nav class="pushpin-demo-nav pinned" style="z-index:99; top:0px">
+    <div class="nav-wrapper orange">
+	<div class="container">
+      <a href="#!" class="brand-logo" style="padding-left: 10px"> Фильмы  </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="film">Фильмы</a></li>
+       
+        <li><a href="lk">Мои Билеты</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a href="log">Войти</a></li>
+        {% endif %}
+
+
+        
+      </ul>
+	</div>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="film">Фильмы</a></li>
+   
+    <li><a href="lk">Мои Билеты</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a href="log">Войти</a></li>
+        {% endif %}
+  </ul>
+
+
+
+
+
+
+<div class="container">
+
+<div class="top" >
+
+
+
+	<div class="block0">
+	<div class="z-depth-2">
+  
+	
+	<div class="row" style="padding: 10px">
+		<div style="width: 300px">
+		<div class="search_box" >
+			<form action="/searchlist">
+				<input class="browser-default" type="text" name="search" id="search" placeholder="Поиск фильма">
+				<input type="submit">			
+			</form>
+			<div id="search_box-result" style="z-index: 100; position: absolute;width: 300px; background-color: #ffffff" ></div>
+		</div>
+		</div>
+
+	
+	</div>   
+	<div class="row" style="padding: 10px">
+
+	</div> 
+    </div>
+    </div>
+
+	<div class="block0">
+	<div class="z-depth-2">
+  	<span style="padding: 30px">  </span>
+	
+	
+	<div class="row" style="padding: 10px">
+    
+
+		<div class="col s3 ">
+     
+		 <label>
+        	<input type="checkbox" checked="checked" class="filled-in " id="comedy"  />
+       		 <span>Комедия</span>
+     		 </label>
+		</div>
+	 	
+		<div class="col s3 ">
+		 <label>
+        	<input type="checkbox" checked="checked" class="filled-in" id="triller" />
+       		 <span>Триллер</span>
+     		 </label>
+		</div>
+
+		<div class="col s3 ">
+		 <label>
+        	<input type="checkbox" checked="checked" class="filled-in" id="travel"  />
+       		 <span>Приключения</span>
+     		 </label>
+		</div>
+
+
+		
+
+    </div>    
+		
+
+    </div> 
+    </div> 
+</div>
+
+
+ 
+  
+    
+
+  <div class="row">
+    <!--  Цикл выдачи всех фильмов в БД  -->
+    {% for i in film %}
+    <div class="{{ i.genre }}">
+    <div class="col s6 m4">
+      
+      <div class="card">
+        <div class="card-image">
+    <a href="#">
+      
+          <img  src="static/{{ i.src }}"  alt="lorem">
+      
+    </a>
+          <span class="card-title"></span>
+        </div>
+        <div class="card-content">
+          <p> <b>{{ i.film }}</b><br> {{ i.genre }} </p> 
+        </div>
+        <div class="card-action">
+          <a href="/bilet/{{i.id}}/">Купить билет</a>
+
+        </div>
+      </div>
+    </div>
+    </div>
+{% endfor %}
+   </div> 
+ 
+
+
+
+
+
+
+</div> 
+
+
+
+
+
+   <footer class="page-footer orange">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Полезная информация</h5>
+                <p class="grey-text text-lighten-4">Демонстрационный сайт-портфолио Евгения Лялина.</p>
+                <p> Все материалы принадлежат их владельцам. </p>
+              </div>
+              <div class="col l4 offset-10 s12">
+                <h5 class="white-text">Навигация</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="film">Фильмы</a></li>
+                  <li><a class="grey-text text-lighten-3" href="lk">Мои Билеты</a></li>
+{% if request.user.is_authenticated %}
+        <li><a class="grey-text text-lighten-3" href="logout1">Выйти({{user}})</a></li>              
+        {% else %}
+        <li><a class="grey-text text-lighten-3" href="log">Войти</a></li>
+        {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            <<<<<
+            <a class="grey-text text-lighten-4 right" href="#!">>>>>></a>
+            </div>
+          </div>
+        </footer>
+
+<!--checkbox-->
+<script>
+$('#triller').on('change', function () {
+             
+
+             if ($('#triller').is(':checked')){
+                  $('.Триллер').css('display', 'block');
+             }
+             else {
+            
+             $('.Триллер').css('display', 'none');
+             }
+          });
+             //.css('display', 'block') // задаем, что элемент <p> становится блочным
+            //.placeholder('Что-то изменилось') // добавляем текстовое содержимое
+            //.fadeOut(750) //  плавно изменяем прозрачность для элемента
+$('#comedy').on('change', function () {
+             
+
+             if ($('#comedy').is(':checked')){
+                  $('.Комедия').css('display', 'block');
+             }
+             else {
+            
+             $('.Комедия').css('display', 'none');
+           }
+           
+          });
+
+$('#travel').on('change', function () {
+             
+
+             if ($('#travel').is(':checked')){
+                  $('.Приключения').css('display', 'block');
+             }
+             else {
+            
+             $('.Приключения').css('display', 'none');
+             }
+            
+        });
+
+//($('#comedy').prop('checked', true)) 
+//($('#triller').prop('checked', true))
+//($('#comedy').prop('checked', true))
+
+
+// Ajax поиск
+$(document).ready(function() {	
+	var $result = $('#search_box-result');
+	
+	$('#search').on('keyup', function(){
+		var search = $('#search').val();
+		if ((search != '') && (search.length > 1)){
+			$.ajax({
+				type: "get",
+				url: "/searchlist",
+				data: {'search': search},
+				success: function(msg){
+					$result.html(msg);
+					if(msg != ''){	
+						$result.fadeIn();
+					} else {
+						$result.fadeOut(100);
+					}
+				}
+			});
+		 } else {
+			$result.html('');
+			$result.fadeOut(100);
+		 }
+	});
+ 	
+ 	//При клике на документ сбрасываем сеарч бокс
+	$(document).on('click', function(e){
+		if (!$(e.target).closest('.search_box').length){
+			$result.html('');
+			$result.fadeOut(100);
+		}
+	});
+});
+
+    
+
+</script>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>
+ 
+    </body>
+  </html>
+
+
+
+
